@@ -1305,7 +1305,7 @@ wl_shm_pool_destroy(struct wl_shm_pool *wl_shm_pool)
  * used to make the pool bigger.
  */
 static inline void
-wl_shm_pool_resize(struct wl_shm_pool *wl_shm_pool, int32_t size)
+wl_shm_pool_resize(struct wl_shm_pool *wl_shm_pool, size_t size)
 {
 	wl_proxy_marshal((struct wl_proxy *) wl_shm_pool,
 			 WL_SHM_POOL_RESIZE, size);
@@ -1664,7 +1664,7 @@ wl_shm_destroy(struct wl_shm *wl_shm)
  * descriptor, to use as backing memory for the pool.
  */
 static inline struct wl_shm_pool *
-wl_shm_create_pool(struct wl_shm *wl_shm, int32_t fd, int32_t size)
+wl_shm_create_pool(struct wl_shm *wl_shm, int32_t fd, size_t size)
 {
 	struct wl_proxy *id;
 

@@ -204,6 +204,7 @@ enum arg_type {
 	INT,
 	UNSIGNED,
 	FIXED,
+	SIZE_T,
 	STRING,
 	OBJECT,
 	ARRAY,
@@ -461,6 +462,8 @@ set_arg_type(struct arg *arg, const char *type)
 {
 	if (strcmp(type, "int") == 0)
 		arg->type = INT;
+	else if (strcmp(type, "size_t") == 0)
+		arg->type = SIZE_T;
 	else if (strcmp(type, "uint") == 0)
 		arg->type = UNSIGNED;
 	else if (strcmp(type, "fixed") == 0)
@@ -1089,6 +1092,9 @@ emit_type(struct arg *a)
 	case INT:
 	case FD:
 		printf("int32_t ");
+		break;
+	case SIZE_T:
+		printf("size_t ");
 		break;
 	case NEW_ID:
 	case UNSIGNED:

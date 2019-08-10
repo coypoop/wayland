@@ -58,8 +58,8 @@ struct wl_shm_pool {
 	int internal_refcount;
 	int external_refcount;
 	char *data;
-	int32_t size;
-	int32_t new_size;
+	size_t size;
+	size_t new_size;
 };
 
 struct wl_shm_buffer {
@@ -226,7 +226,7 @@ shm_pool_destroy(struct wl_client *client, struct wl_resource *resource)
 
 static void
 shm_pool_resize(struct wl_client *client, struct wl_resource *resource,
-		int32_t size)
+		size_t size)
 {
 	struct wl_shm_pool *pool = wl_resource_get_user_data(resource);
 
@@ -256,14 +256,14 @@ static const struct wl_shm_pool_interface shm_pool_interface = {
 
 static void
 shm_create_pool(struct wl_client *client, struct wl_resource *resource,
-		uint32_t id, int fd, int32_t size)
+		uint32_t id, int fd, size_t size)
 {
 	struct wl_shm_pool *pool;
 
 	if (size <= 0) {
 		wl_resource_post_error(resource,
 				       WL_SHM_ERROR_INVALID_STRIDE,
-				       "invalid size (%d)", size);
+				       "invalid size (%zu)", size);
 		goto err_close;
 	}
 

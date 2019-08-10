@@ -251,7 +251,7 @@
 	created, but using the new size.  This request can only be
 	used to make the pool bigger.
       </description>
-      <arg name="size" type="int" summary="new size of the pool, in bytes"/>
+      <arg name="size" type="size_t" summary="new size of the pool, in bytes"/>
     </request>
   </interface>
 
@@ -359,7 +359,7 @@
       </description>
       <arg name="id" type="new_id" interface="wl_shm_pool" summary="pool to create"/>
       <arg name="fd" type="fd" summary="file descriptor for the pool"/>
-      <arg name="size" type="int" summary="pool size, in bytes"/>
+      <arg name="size" type="size_t" summary="pool size, in bytes"/>
     </request>
 
     <event name="format">

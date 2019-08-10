@@ -1069,7 +1069,7 @@ struct wl_shm_pool_interface {
 	 */
 	void (*resize)(struct wl_client *client,
 		       struct wl_resource *resource,
-		       int32_t size);
+		       size_t size);
 };
 
 
@@ -1383,7 +1383,7 @@ struct wl_shm_interface {
 			    struct wl_resource *resource,
 			    uint32_t id,
 			    int32_t fd,
-			    int32_t size);
+			    size_t size);
 };
 
 #define WL_SHM_FORMAT 0
